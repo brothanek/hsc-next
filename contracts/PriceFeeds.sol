@@ -29,41 +29,29 @@ contract PriceFeeds {
         );
     }
 
-    /**
-     * Returns the latest Ether price.
-     */
     function getLatestEthPrice() public view returns (int256) {
         (, int256 price, , , ) = ethPriceFeed.latestRoundData();
-        // Returns int256 with 8 implied decimal points, as Solidity does not support floating-point numbers.
-        // To convert the returned value to a human-readable format, divide it by 10^8 outside the contract.
         return price;
     }
 
-    /**
-     * Returns the latest Bitcoin price.
-     */
     function getLatestBtcPrice() public view returns (int256) {
         (, int256 price, , , ) = btcPriceFeed.latestRoundData();
-        // Returns int256 with 8 implied decimal points, as Solidity does not support floating-point numbers.
-        // To convert the returned value to a human-readable format, divide it by 10^8 outside the contract.
+
         return price;
     }
 
     function getLatestLinkPrice() public view returns (int256) {
         (, int256 price, , , ) = linkPriceFeed.latestRoundData();
-        // Returns int256 with 8 implied decimal points, as Solidity does not support floating-point numbers.
-        // To convert the returned value to a human-readable format, divide it by 10^8 outside the contract.
         return price;
     }
 
-    /**
-     * Returns the latest Ether and Bitcoin prices.
-     */
     function getLatestPrices()
         public
         view
         returns (int256 ethPrice, int256 btcPrice, int256 linkPrice)
     {
+        // Returns int256 with 8 implied decimal points, as Solidity does not support floating-point numbers. 
+        // To convert to a human-readable number, divide by 1e8 (10^8).
         ethPrice = getLatestEthPrice() / 1e8;
         btcPrice = getLatestBtcPrice() / 1e8;
         linkPrice = getLatestLinkPrice() / 1e8;
