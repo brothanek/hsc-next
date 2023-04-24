@@ -1,4 +1,4 @@
-import { PriceFeeds } from "./components/ContractTestSection"
+import { PriceFeeds } from "./components/PriceFeeds"
 
 export default function Home() {
   return (
